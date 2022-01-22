@@ -63,9 +63,7 @@ contract AfricanNomads is ERC721, Ownable, ReentrancyGuard {
     }
 
     function benefactorSetPrice(uint256 _newPrice, uint256 tokenId) public nonReentrant() onlyBenefactor(tokenId) {
-        require(tokenId < maxTokens, "Token out of range");
-        require(_newPrice >= .1 ether, "Price too low ;)");
-        price[tokenId] = _newPrice;
+        setPrice(_newPrice, tokenId);
     }
 
     function benefactorSetBenefactor(address _newBenefactor, uint256 tokenId) public nonReentrant() onlyBenefactor(tokenId) {
